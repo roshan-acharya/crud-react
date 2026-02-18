@@ -10,6 +10,17 @@ import Form from "./components/Form";
 const App = () => {
   const [items, setItems] = useState(groceryItems);
 
+  const addItem = (itemName) => {
+    const newItem = {
+      name: itemName,
+      completed: false,
+      id: nanoid(),
+    };
+    const newItems = [...items, newItem];
+    setItems(newItems);
+    toast.success("grocery item added");
+  };
+
   const editCompleted = (itemId) => {
     const newItems = items.map((item) => {
       if (item.id === itemId) {
@@ -26,13 +37,6 @@ const App = () => {
     setItems(newItems);
     toast.success("item deleted");
   };
-
-  const addItem = (itemName) => {
-    const newItem = {
-      name: itemName,
-      completed: false,
-      id: nanoid(),
-    };
 
   return (
     <section className="section-center">
