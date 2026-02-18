@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { groceryItems } from "./data/groceryItems";
 import { useState } from "react";
 import "./App.css";
+import { nanoid } from "nanoid";
+import Form from "./components/Form";
 
 const App = () => {
   const [items, setItems] = useState(groceryItems);
@@ -25,9 +27,17 @@ const App = () => {
     toast.success("item deleted");
   };
 
+  const addItem = (itemName) => {
+    const newItem = {
+      name: itemName,
+      completed: false,
+      id: nanoid(),
+    };
+
   return (
     <section className="section-center">
       <ToastContainer position="top-center" />
+      <Form addItem={addItem} />
       <Items
         items={items}
         editCompleted={editCompleted}
