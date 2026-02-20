@@ -18,7 +18,11 @@ const SingleItem = ({ item, editCompleted, removeItem }) => {
         {item.name}
       </p>
 
-      <button className="btn icon-btn" type="button" onClick={() => null}>
+      <button
+        className="btn icon-btn"
+        type="button"
+        onClick={() => setEditId(item.id)}
+      >
         <FiEdit size={18} />
       </button>
 
